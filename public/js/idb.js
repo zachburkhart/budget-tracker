@@ -45,17 +45,14 @@ function uploadExpense() {
           }
 
           const transaction = db.transaction(['new_expense'], 'readwrite');
-          const pizzaObjectStore = transaction.objectStore('new_expense');
-          // clear all items in your store
-          pizzaObjectStore.clear();
+          const expenseObjectStore = transaction.objectStore('new_expense');
+          expenseObjectStore.clear();
         })
         .catch(err => {
-          // set reference to redirect back here
           console.log(err);
         });
     }
   };
 }
 
-// listen for app coming back online
-window.addEventListener('online', uploadPizza);
+window.addEventListener('online', uploadExpense);
